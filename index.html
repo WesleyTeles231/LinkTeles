@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Abertura Maps SMS — Abrir Google Maps, SMS, Chrome e Configurações | GitHub Pages</title>
+
+  <!-- SEO / discovery -->
+  <meta name="description" content="Página de utilitários: abrir Google Maps no app, enviar SMS já preenchido, abrir configurações de app (App Info) e forçar abertura do Google Chrome. Palavras-chave: abertura Maps SMS, abrir maps app, sms link, abrir Chrome intent.">
+  <meta name="keywords" content="abertura Maps SMS, abrir maps app, sms link, open maps intent, abrir Chrome, app settings, GitHub Pages">
+  <link rel="canonical" href="https://seunome.github.io/seu-repositorio/">
+  <meta name="robots" content="index,follow">
+  <meta property="og:title" content="Abertura Maps SMS — Abrir Google Maps, SMS, Chrome e Configurações">
+  <meta property="og:description" content="Links práticos para abrir Google Maps no app, enviar SMS com texto pré-definido, abrir configurações de app e abrir Chrome no Android.">
+  <meta property="og:type" content="website">
+
+  <!-- Structured data (JSON-LD) para ajudar indexação -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Abertura Maps SMS — Abrir Google Maps, SMS, Chrome e Configurações",
+    "description": "Página de utilitários: abrir Google Maps no app, enviar SMS já preenchido, abrir configurações de app (App Info) e forçar abertura do Google Chrome.",
+    "keywords": "abertura Maps SMS, abrir maps app, sms link, abrir Chrome, app settings",
+    "url": "https://seunome.github.io/seu-repositorio/"
+  }
+  </script>
+
+  <style>
+    :root{--bg:#fff;--card:#fff;--accent:#0b63d6;--ok:#2dbe60}
+    body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial;margin:0;background:linear-gradient(180deg,#f7f9fc,#ffffff);color:#111;padding:18px;min-height:100vh}
+    .wrap{max-width:900px;margin:0 auto}
+    h1{font-size:1.4rem;margin:0 0 6px}
+    p.lead{margin:0 0 16px;color:#444}
+    .card{background:var(--card);border-radius:12px;padding:14px;margin:12px 0;box-shadow:0 6px 18px rgba(16,24,40,0.06);border:1px solid #eef2f7}
+    .btn{display:inline-block;padding:10px 14px;border-radius:10px;text-decoration:none;color:#fff;background:var(--accent);margin-right:8px}
+    .btn.secondary{background:#444}
+    .small{font-size:0.9rem;color:#555;margin-top:8px}
+    code{background:#f1f5f9;padding:2px 6px;border-radius:6px;font-family:monospace}
+    .promptBox{margin-top:12px;display:flex;gap:8px;align-items:flex-start;flex-direction:column}
+    textarea{width:100%;min-height:120px;padding:8px;border-radius:8px;border:1px solid #e2e8f0;font-family:monospace}
+    .copyBtn{padding:8px 12px;border-radius:8px;border:0;background:var(--ok);color:#fff;cursor:pointer}
+    footer{margin-top:18px;color:#666;font-size:0.85rem}
+    .seoList{margin:10px 0;padding-left:18px}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>🔗 Abertura Maps, SMS, Chrome e Configurações</h1>
+    <p class="lead">Use os botões abaixo no Android para abrir apps via <code>intent://</code> (quando suportado) com fallback para a web. Suba este arquivo em GitHub Pages para indexação.</p>
+
+    <!-- === SMS === -->
+    <div class="card" id="smsCard">
+      <h2>📩 Abrir SMS (app de mensagens) — link pronto</h2>
+      <p class="small">Ao clicar, abre o app de SMS com número e mensagem já preenchidos.</p>
+      <!-- personalizar número e mensagem -->
+      <p>
+        <a class="btn" id="smsBtn" href="sms:+5511999999999?body=Oi%2C%20tudo%20bem%3F">Abrir SMS: +55 11 99999-9999</a>
+        <a class="btn secondary" href="#" onclick="showExample('sms'); return false;">Editar (JS)</a>
+      </p>
+      <p class="small">URL: <code>sms:+5511999999999?body=Oi%2C%20tudo%20bem%3F</code></p>
+    </div>
+
+    <!-- === Google Maps Intent === -->
+    <div class="card" id="mapsCard">
+      <h2>🗺️ Abrir Google Maps — tenta app (Intent) + fallback web</h2>
+      <p class="small">Altere as coordenadas ou endereço nas variáveis JS.</p>
+      <p>
+        <a class="btn" href="#" onclick="openMapsIntent(); return false;">Abrir rota no Google Maps (app/fallback)</a>
+        <a class="btn secondary" href="https://www.google.com/search?q=abertura+Maps+SMS" target="_blank" rel="noopener">Pesquisar no Google (exemplo)</a>
+      </p>
+      <p class="small">Ex.: destino <code>-23.55052,-46.633308</code></p>
+    </div>
+
+    <!-- === App Settings (App Info) === -->
+    <div class="card" id="appSettingsCard">
+      <h2>⚙️ Abrir configurações do app (App info)</h2>
+      <p class="small">Substitua <code>com.example.app</code> pelo package real (ex.: <code>com.google.android.apps.maps</code>).</p>
+      <p>
+        <a class="btn" href="#" onclick="openAppSettings('com.example.app'); return false;">Abrir App Info (com.example.app)</a>
+      </p>
+    </div>
+
+    <!-- === Open Chrome === -->
+    <div class="card" id="chromeCard">
+      <h2>🌐 Abrir Google Chrome (tenta abrir o app)</h2>
+      <p class="small">Este botão tenta abrir um URL diretamente no app Chrome (via intent). Caso não consiga, abre no navegador padrão.</p>
+      <p>
+        <a class="btn" href="#" onclick="openChrome('https://www.google.com'); return false;">Abrir Chrome (https://www.google.com)</a>
+      </p>
+    </div>
+
+    <!-- === SEO / Encontrabilidade === -->
+    <div class="card" id="seoCard">
+      <h2>🔎 Como fazer a página ser encontrada por pesquisa (prático)</h2>
+      <ul class="seoList">
+        <li>1) **Conteúdo com palavras-chave**: mantenha título e H1 com termos como <em>abertura Maps SMS</em>, <em>abrir maps app</em>. ✅</li>
+        <li>2) **Meta tags & JSON-LD**: já incluídas neste arquivo. ✅</li>
+        <li>3) **Sitemap & Search Console**: crie `sitemap.xml` no repo e envie ao Google Search Console para indexação mais rápida. (ex.: `/sitemap.xml`). ✅</li>
+        <li>4) **Backlinks locais**: poste o link em um fórum, blog ou redes sociais para o Google descobrir mais rápido. ✅</li>
+        <li>5) **Página leve e mobile-first**: já otimizada; GitHub Pages é aceito pelo Google. ✅</li>
+        <li>6) **Usar título e parágrafos com palavras exatas** (ex.: "abertura Maps SMS") e termos relacionados. ✅</li>
+      </ul>
+      <p class="small">Também incluí um botão que realiza uma pesquisa Google com a frase <code>abertura Maps SMS</code> — isso ajuda a testar como a pesquisa se comporta.</p>
+    </div>
+
+    <!-- === Prompt para copiar (melhorado) === -->
+    <div class="card">
+      <h2>📋 Prompt melhorado (copiar)</h2>
+      <p class="small">Use este prompt para pedir ao GPT gerar ou melhorar essa página como especialista em web/SEO e Android intents.</p>
+      <div class="promptBox">
+        <textarea id="promptText" readonly>
+Por favor, gere um arquivo index.html otimizado para GitHub Pages que contenha:
+1) Link SMS (sms:+55... ?body=...) que abre o app de mensagens com número e mensagem parametrizáveis.
+2) Botão que tente abrir Google Maps no app usando intent:// com fallback para https://www.google.com/maps/dir/?api=1 (parametrizável por coordenadas/endereço).
+3) Botão que abra "Informações do aplicativo" (App info) para um package Android especificado (usar action android.settings.APPLICATION_DETAILS_SETTINGS via intent).
+4) Botão que force a abertura do Google Chrome para um URL (usar intent com package com.android.chrome e fallback).
+5) Tags SEO: title, description, JSON-LD (WebPage), canonical, robots, e conteúdo visível com as palavras-chave: "abertura Maps SMS", "abrir maps app", "sms link", "abrir Chrome".
+6) Código JavaScript com fallback claros e mensagens para o usuário.
+7) Estilo simples, responsivo e com botões de copiar para código e prompt.
+Retorne somente o arquivo HTML completo e testado para uso em GitHub Pages.
+        </textarea>
+        <div>
+          <button class="copyBtn" onclick="copyPrompt()">📋 Copiar prompt melhorado</button>
+          <button class="copyBtn" onclick="copyCode()">📄 Copiar todo o HTML</button>
+        </div>
+        <p id="copyStatus" class="small"></p>
+      </div>
+    </div>
+
+    <footer>
+      <p>Observações rápidas:</p>
+      <ul class="seoList">
+        <li>🔒 Se o aparelho está bloqueado (screen lock/FRP) um link **não** vai desbloquear — siga recuperação oficial da Google/MIUI.</li>
+        <li>⚠️ Nem todos os navegadores suportam <code>intent://</code>. O script tenta fallback para a web quando aplicável.</li>
+      </ul>
+    </footer>
+  </div>
+
+<script>
+/* ================== CONFIGURÁVEIS ==================
+   Altere estas variáveis conforme quiser antes de subir.
+*/
+var CONFIG = {
+  smsNumber: '+5511999999999',
+  smsBody: 'Oi, tudo bem?',
+  mapsDest: '-23.55052,-46.633308', // coordenadas ou texto (ex: 'Av+Paulista+1000+Sao+Paulo')
+  appPackageExample: 'com.example.app', // substitua pelo package real
+  chromeUrl: 'https://www.google.com'
+};
+/* ================================================== */
+
+/* Atualiza o link SMS visível com valores do CONFIG */
+(function applyConfig(){
+  var smsHref = 'sms:' + CONFIG.smsNumber + '?body=' + encodeURIComponent(CONFIG.smsBody);
+  var smsBtn = document.getElementById('smsBtn');
+  if(smsBtn) smsBtn.href = smsHref;
+})();
+
+/* ---------- MAPS: intent com fallback ---------- */
+function openMapsIntent(){
+  var latlon = CONFIG.mapsDest;
+  var daddr = encodeURIComponent(latlon);
+  // Intent que pede explicitamente pacote do Google Maps
+  var intentUri = "intent://maps.google.com/maps?daddr=" + daddr + "#Intent;package=com.google.android.apps.maps;scheme=https;end;";
+  // Tenta abrir intent
+  window.location = intentUri;
+  // Fallback para web se intent não for suportado
+  setTimeout(function(){
+    window.location = "https://www.google.com/maps/dir/?api=1&destination=" + daddr + "&travelmode=driving";
+  }, 700);
+}
+
+/* ---------- APP SETTINGS: abrir App Info via intent ---------- */
+function openAppSettings(packageName){
+  if(!packageName) packageName = CONFIG.appPackageExample;
+  var intentUri = "intent://details?id=" + encodeURIComponent(packageName) + "#Intent;action=android.settings.APPLICATION_DETAILS_SETTINGS;scheme=package;end;";
+  window.location = intentUri;
+  // Caso não abra, perguntar para copiar o package
+  setTimeout(function(){
+    if(confirm("Se nada abriu, deseja copiar o nome do pacote (" + packageName + ") para a área de transferência?")) {
+      navigator.clipboard && navigator.clipboard.writeText(packageName);
+    }
+  },700);
+}
+
+/* ---------- OPEN CHROME: tenta abrir Chrome com URL ---------- */
+function openChrome(url){
+  if(!url) url = CONFIG.chromeUrl;
+  // intent que força abertura do Chrome com URL
+  // Observação: navegadores podem bloquear intent que force pacote; é a melhor tentativa.
+  var encodedUrl = encodeURIComponent(url);
+  var intentUri = "intent://" + url.replace(/^https?:\/\//,'') + "#Intent;package=com.android.chrome;scheme=https;end;";
+  // Tenta abrir o Chrome via intent
+  window.location = intentUri;
+  // Fallback: abrir com window.location (navegador padrão)
+  setTimeout(function(){
+    window.location = url;
+  },700);
+}
+
+/* ---------- Copiar prompt e código ---------- */
+function copyPrompt(){
+  var ta = document.getElementById('promptText');
+  navigator.clipboard && navigator.clipboard.writeText(ta.value).then(function(){
+    document.getElementById('copyStatus').textContent = '✅ Prompt copiado para a área de transferência.';
+  }, function(){
+    document.getElementById('copyStatus').textContent = '⚠️ Não foi possível copiar automaticamente. Selecione e copie manualmente.';
+  });
+}
+
+function copyCode(){
+  // copia todo o HTML atual (document.documentElement.outerHTML)
+  var html = '<!doctype html>\\n' + document.documentElement.outerHTML;
+  navigator.clipboard && navigator.clipboard.writeText(html).then(function(){
+    document.getElementById('copyStatus').textContent = '✅ HTML copiado para a área de transferência.';
+  }, function(){
+    document.getElementById('copyStatus').textContent = '⚠️ Não foi possível copiar automaticamente. Use "Ver código fonte" e copie manualmente.';
+  });
+}
+
+/* ---------- Quick editor demo (inline prompt) ---------- */
+function showExample(kind){
+  if(kind === 'sms'){
+    var newNumber = prompt('Informe o número (formato +55XXXXXXXXXXX):', CONFIG.smsNumber);
+    var newBody = prompt('Informe a mensagem:', CONFIG.smsBody);
+    if(newNumber) CONFIG.smsNumber = newNumber;
+    if(newBody) CONFIG.smsBody = newBody;
+    var smsHref = 'sms:' + CONFIG.smsNumber + '?body=' + encodeURIComponent(CONFIG.smsBody);
+    document.getElementById('smsBtn').href = smsHref;
+    alert('Atualizado. Não se esqueça de commitar o arquivo se quiser salvar permanentemente.');
+  }
+}
+</script>
+</body>
+</html>
